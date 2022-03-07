@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles.css"
     <script defer src="index.js"></script>
     <title>News Project</title>
 </head>
@@ -11,19 +12,21 @@
     <h1>Breaking News</h1>
     <header>
         <nav class="nav">
-            <ul class ='domains'>
-                <li id="navFox"><h2>Fox News</h2></li>
-                <li id="navCnn"><h2>CNN</h2></li>
-                <li id="navBbc"><h2>BBC</h2></li>
+            <ul>
+                <li id="trending"><h2>Trending Articles</h2></li>
+                <li id="World"><h2>World News</h2></li>
             </ul>
         </nav> 
     </header>
-    <div id="fox-container"></div>
-    <div id="cnn-container" ></div>
-    <div id="bbc-container"></div>
+    <hr />
+    
+    <div id="fox-container"><h2 id="fox">Fox News</h2></div>
+    <div id="cnn-container"><h2>CNN</h2></div>
+    <div id="bbc-container"><h2>BBC</h2></div>
     <form id="comment-section">
-        <input id="comment-input">
-        <button>Submit Comment</button>
+        <label for="comments">Comments:</label>
+      <input type="text" id="new-comments" name="new-comment-section" placeholder="Add a new comment">
+      <input type="submit" value="Submit">
     </form>
 </body>
 </html>
