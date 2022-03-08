@@ -1,4 +1,34 @@
 //could assign newNewsObject to a global variable
+const form = document.querySelector('form')
+form.addEventListener('keyup', (e) => {
+const searchString = e.target.value
+console.log(searchString)
+story.keywords.includes(searchString)
+});
+
+   
+// const filtered
+
+// console.log(foxNewsKeywords)
+// let deepKeywordsObj = {}
+// console.log(deepKeywordsObj)
+// console.log(deepKeywordsArray)
+let makeTheArticle = {}
+console.log(makeTheArticle)
+    
+
+
+
+//TRYING A FILTER FUNCTION
+
+// function filterFunction(story){
+    
+//     story.keywords.filter(word => {
+//         word.includes(form)
+//         console.log(word)
+//     })
+// }
+
 function makeArticle(story){
     let h2Tag = document.createElement('h2')
     let articleTag = document.createElement('article')   
@@ -15,8 +45,15 @@ function makeArticle(story){
     let src = document.createAttribute('src')
     src.value = story.image
     imgTag.setAttributeNode(src)
+    // let allKeywords = story.keywords
+    // deepKeywordsArray.push(allKeywords)
+    // deepKeywordsObj.push(story)
+    // filterFunction(story)
+    console.log(story)
     return articleTag
+    
  }
+
 
 
 function renderFox(){
@@ -25,36 +62,30 @@ function renderFox(){
 .then(newsData => { console.log(newsData)
 
     let foxNewsStory = newsData[0].data
-    console.log(foxNewsStory)
-    let newNewsObject = foxNewsStory.map((story) => ({
+    // console.log(foxNewsStory)
+    let newFoxNewsObject = foxNewsStory.map((story) => ({
         "title": story.title,
         "url": story.url,
         "image": story.image,
-        "keywords": story.deep_keywords
+        "keywords": story.deep_keywords,
 
     }))
-console.log(newNewsObject)
-    render(newNewsObject)
+    // deepKeywordsObj
 
- 
+    render(newFoxNewsObject)
 
  function render(newsObj) {
     let container = document.getElementById('rightside')
     newsObj.forEach((story) => {
         container.appendChild(makeArticle(story))
+        // console.log(story.keywords)
         
     })
- }
-
-
-
-// const form = document.querySelector('query')
-// form.addEventListener('keyup', (e) => console.log(e))
-    
+ }  
 })
 }
 
-renderFox()
+
 
 
 function renderCnn(){
@@ -63,13 +94,15 @@ function renderCnn(){
     .then(data => {
         let eachCnnStory = data[0].data
         console.log(eachCnnStory)
-        eachCnnStory.map((story) => ({
-            "image": eachCnnStory.image,
-            "keywords": eachCnnStory.deep_keywords,
-            "title": eachCnnStory.title,
-            "url": eachCnnStory.url
+       let myNewCnnObj = eachCnnStory.map((story) => ({
+            "image": story.image,
+            "keywords": story.deep_keywords,
+            "title": story.title,
+            "url": story.url,
         }))
-        renderLeftSide(eachCnnStory)
+        // globalKeywordsVariable = myNewCnnObj[0].keywords
+       
+        renderLeftSide(myNewCnnObj)
 
         })
     
@@ -83,4 +116,10 @@ function renderCnn(){
          }      
 }
 
+
+
+
+
+
 renderCnn()
+renderFox()
