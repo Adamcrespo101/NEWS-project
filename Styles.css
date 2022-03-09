@@ -14,6 +14,32 @@
 
   }
 
+  /* #leftside {
+    color: yellow
+
+  } */
+
+  article {
+
+    /* background-color: rgb(150, 150, 253); */
+    padding: 20px;
+    height: 60vh;
+    
+  }
+  
+  img {
+
+    width: 100%;
+    height: 300px
+
+  }
+
+  .h2, h2 {
+    font-size: initial;
+    text-align: center;
+}
+
+  
   
   .left {
     left: 0;
