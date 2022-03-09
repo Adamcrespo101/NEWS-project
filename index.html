@@ -15,9 +15,12 @@
         <h1>Breaking News</h1>
         <nav class="nav">
             <ul>
-                <li id="trending"><h2>Trending Articles</h2></li>
-                <li id="World"><h2>World News</h2></li>
+                <li id="trending"><button id="trending">Trending</button></li>
+                <li id="World"><button id="bbc">World News</button></li>
+                <li id="fox"><button id='fox'>Fox News</button></li>
+                <li id="cnn"><button id="cnn">CNN</button></li>
             </ul>
+            <input type="text" placeholder="search" id="searchbar">
         </nav> 
     </header>
     
@@ -28,13 +31,20 @@
         <div class="split right" id="rightside">
             <h2>Headline:</h2>
         </div>
-    </div>    
-</body>
-<footer>
+    </div>
+      
     <form id="comment-section">
-        <label for="comments">Comments:</label>
-      <input type="text" id="new-comments" name="new-comment-section" placeholder="Add a new comment">
-      <input type="submit" value="Submit">
+        <div id="comment-container">  
+            <label for="comments">Comments:</label>
+            <textarea id="textarea"></textarea>
+      <input type="submit" id="submitbtn" value="Add New Comment">
+      </div> 
     </form>
-</footer>
+    <footer id="footer">
+        <label for="comments">Comments:</label>
+            <textarea id="textarea"></textarea>
+      <input type="submit" id="submitbtn" value="Add New Comment">
+    </footer>
+</body>
+
 </html>
