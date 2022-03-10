@@ -9,42 +9,26 @@
     <script defer src="index.js"></script>
     <title>News Project</title>
 </head>
+<header id="header">
+    <h1>Compare The News</h1>
+</header>  
+    <h3>How It Works</h3>
+    <p id="intro-sentence">Search any topic and compare news stories from America's two most popular, yet polarising news outlets.</p>
+    <div>   
+        <form id="form">
+        <input type="search" id="query" name="q" placeholder="Search...">
+      
+    </div>
+
 <body>
-    
-    <header id="header">
-        <h1>Breaking News</h1>
-        <nav class="nav">
-            <ul>
-                <li id="trending"><button id="trending">Trending</button></li>
-                <li id="World"><button id="bbc">World News</button></li>
-                <li id="fox"><button id='fox'>Fox News</button></li>
-                <li id="cnn"><button id="cnn">CNN</button></li>
-            </ul>
-            <input type="text" placeholder="search" id="searchbar">
-        </nav> 
-    </header>
-    
     <div class='split'>
         <div class="split left" id="leftside">
-            <h2 id="cnn">Headline:</h2>
+            <h2 id="cnn">CNN</h2>
         </div>
         <div class="split right" id="rightside">
-            <h2>Headline:</h2>
+            <h2 id="fox"> FOX news</h2>
         </div>
-    </div>
-      
-    <form id="comment-section">
-        <div id="comment-container">  
-            <label for="comments">Comments:</label>
-            <textarea id="textarea"></textarea>
-      <input type="submit" id="submitbtn" value="Add New Comment">
-      </div> 
-    </form>
-    <footer id="footer">
-        <label for="comments">Comments:</label>
-            <textarea id="textarea"></textarea>
-      <input type="submit" id="submitbtn" value="Add New Comment">
-    </footer>
+    </div>    
 </body>
-
 </html>
+

@@ -1,152 +1,190 @@
-document.addEventListener('DOMContentLoaded', (e) => {
-
-    const form = document.getElementById('comment-section')
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const input = document.getElementById('textarea').value
-         const newComment = document.createElement('p');
-        newComment.textContent = input;
-        const container = document.getElementById('comment-container')
-        container.appendChild(newComment)
-        const deleteBtn = document.createElement('button')
-        deleteBtn.innerText = 'x'
-        deleteBtn.addEventListener('click', (e) => {
-            e.target.parentNode.remove();
-            
-        })
-        newComment.append(deleteBtn)
-        })
-    
+foxNewsSearchArray = []
+cnnNewsSearchArray = []
+//RIGHT SIDE! FOX
+const form = document.querySelector('form')
+form.addEventListener('keyup', (e) => {
+const searchString = e.target.value
+// console.log(searchString)
+let container = document.getElementById('rightside')
+let currentArticles = container.querySelectorAll('article')
+currentArticles.forEach((article) => article.remove())
+const filterNewsArray = foxNewsSearchArray.forEach(newsStory => {
+    newsStory.forEach((story) => {
+       let whatIWant = story.keywords
+       if (whatIWant.includes(searchString)){
+           container.appendChild(makeArticle(story))
+       }
     })
-
-    renderFox();
-    renderCnn();
-    renderBbc();
-    renderTrend();
-   
-    
-    
-
-
-    
-   
-   
-   
-   const left = document.getElementById('leftside')
-   const right = document.getElementById('rightside')
-   
-
-
-   function renderFox (news){
-   fetch('https://newsapi.org/v2/top-headlines?sources=fox-news&apiKey=2a61e83cb0f542c7aa6a93568b9717d5')
-    .then(res => res.json())
-    .then(news => {
-        const button = document.getElementById('fox') 
-        button.addEventListener('click', () => {
-        let newsArr = news.articles 
-        let i = newsArr[Math.floor(Math.random()* 10)]; 
-        const author = document.createElement('h3')
-        author.textContent = i.author
-        const title = document.createElement('h4')
-        title.textContent = i.title
-        const date = document.createElement('h5')
-        date.textContent = i.publishedAt
-        const desc = document.createElement('p')
-        desc.textContent = i.description
-        const img = document.createElement('img')
-        img.src = i.urlToImage
-        img.style.width = '600px';
-        img.style.height = '400px';
-        const link = document.createElement('a')
-            link.textContent = 'Link to Article'
-            link.href = i.url
-        desc.append(link)
-        right.append(author, title, desc, img, date)
-    })}
-)}
-
-    function renderCnn (news){
-        fetch('https://newsapi.org/v2/top-headlines?sources=cnn&apiKey=2a61e83cb0f542c7aa6a93568b9717d5')
-         .then(res => res.json())
-         .then(news => {
-            const button = document.getElementById('cnn') 
-            button.addEventListener('click', () => {
-            let newsArr = news.articles
-             let i = newsArr[Math.floor(Math.random()* 10)]; //iterates through object to produce a random 
-            console.log(i)
-            const title = document.createElement('h4')
-            title.textContent = i.title
-            const date = document.createElement('h5')
-            date.textContent = i.publishedAt
-            const desc = document.createElement('p')
-            desc.textContent = i.description
-            const link = document.createElement('a')
-            link.textContent = 'Link to Article'
-            link.href = i.url
-            const img = document.createElement('img')
-            img.src = i.urlToImage
-            img.style.width = '600px';
-            img.style.height = '400px';
-            desc.append(link)
-            left.append(title, desc, img, date)
-             
-             console.log(news)
-            })
+})
+})
+//LEFT SIDE event listener! CNN
+form.addEventListener('keyup',(e) => {
+    const searchString = e.target.value
+    let container = document.getElementById('leftside')
+    let currentArticles = container.querySelectorAll('article')
+    currentArticles.forEach((article) => article.remove())
+    const filterNewsArray = cnnNewsSearchArray.forEach(newsStory => {
+        newsStory.forEach((story) => {
+           let whatIWant = story.keywords
+           if (whatIWant.includes(searchString)){
+               container.appendChild(makeArticle(story))
+           }
         })
-    }
-        function renderBbc (news) {
-        const button = document.getElementById('bbc') 
-        button.addEventListener('click', () => {
-               fetch('https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=2a61e83cb0f542c7aa6a93568b9717d5')
-               .then(res => res.json())
-               .then(news => {
-                let newsArr = news.articles                
-                 let i = newsArr[Math.floor(Math.random()* 10)]; //iterates through object to produce a random 
-                console.log(i)
-               const title = document.createElement('h4')
-                title.textContent = i.title
-                const desc = document.createElement('p')
-                desc.textContent = i.description
-                const link = document.createElement('a')
-                link.textContent = 'Link to Article'
-                link.href = i.url
-                const img = document.createElement('img')
-                img.src = i.urlToImage
-                img.style.width = '600px';
-                img.style.height = '400px';
-                desc.append(link)
-                left.append(title, desc, img)
-               })
-
-            })     
-        }     
-
-function renderTrend (news) {
-    const button = document.getElementById('trending') 
-    button.addEventListener('click', () => {
-           fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=2a61e83cb0f542c7aa6a93568b9717d5')
-           .then(res => res.json())
-           .then(news => {
-               console.log(news)
-            let newsArr = news.articles                
-             let i = newsArr[Math.floor(Math.random()* 10)]; //iterates through object to produce a random 
-            console.log(i)
-            const title = document.createElement('h4')
-            title.textContent = i.title
-            const desc = document.createElement('p')
-            desc.textContent = i.description
-            const link = document.createElement('a')
-            link.textContent = 'Link to Article'
-            link.href = i.url
-            const img = document.createElement('img')
-            img.src = i.urlToImage
-            img.style.width = '600px';
-            img.style.height = '400px';
-            desc.append(link)
-            right.append(title, desc, img)
-           })
-        })     
-    }
+    })
+})
 
 
+function makeArticle(story){
+    (console.log(story))
+    let h2Tag = document.createElement('h2')
+    let articleTag = document.createElement('article') 
+    articleTag.setAttribute('class', 'article-tags')  
+    let aTag = document.createElement('a')
+    let imgTag = document.createElement('img')
+    articleTag.appendChild(h2Tag)
+    aTag.appendChild(imgTag)
+    articleTag.appendChild(aTag)
+    h2Tag.appendChild(document.createTextNode(story.title))
+    let href = document.createAttribute('href')
+    href.value = story.url
+    aTag.setAttributeNode(href)
+    aTag.appendChild(imgTag)
+    let src = document.createAttribute('src')
+    src.value = story.image
+    imgTag.setAttributeNode(src)
+   
+    // deepKeywordsArray.push(allKeywords)
+    // deepKeywordsObj.push(story)
+    // filterFunction(story)
+    
 
+
+    //add comment and submit button
+    let form = document.createElement('form')
+    form.setAttribute('class', 'form')
+   
+   
+    let commentBttn = document.createElement('button')
+    let input = document.createElement('input')
+    
+    let likeBttn = document.createElement('button')
+    let divContainer = document.createElement('div')
+    let likeContainer = document.createElement('div')//
+    likeContainer.className = 'likes'
+    let likes = Math.floor(Math.random()* 10000);//
+    likes.className = 'likes'//
+    likeContainer.textContent = 'Likes: ' + likes;//
+    //.append(likeBttn)
+    
+    likeBttn.addEventListener('click', () => { //
+        likeContainer.textContent = 'Likes: ' + likes; //         
+        likes++; //
+       
+    })
+   divContainer.setAttribute('class', 'divcontainer')
+    likeBttn.setAttribute('class', 'likebutton')
+    likeBttn.innerText = '❤️'
+    input.setAttribute('placeholder', 'Add a comment...')
+    input.setAttribute('class', 'comment-input')
+    let nameInput = document.createElement('input') //
+    nameInput.setAttribute('placeholder', 'Name...') //
+    nameInput.setAttribute('class', 'name-input')//
+    commentBttn.innerText = 'Comment'
+    articleTag.append(likeBttn, likeContainer)
+    form.append(nameInput, input, commentBttn)
+    articleTag.append(divContainer, form) //
+    form.addEventListener('submit', function (e){ //
+        e.preventDefault()
+        if (nameInput.value === ''){
+            return alert('please enter a name')
+        } else {
+            let pTag = document.createElement('p')
+            pTag.textContent = `${nameInput.value}: ${input.value}`
+            divContainer.append(pTag)
+            form.reset(nameInput, input)
+            
+        }
+       
+        
+        // divContainer.append(form)
+        // divContainer.append(pTag)
+       
+        // form.reset(commentInput)
+       
+
+        
+    })
+    // likeBttn.addEventListener()
+
+   
+    return articleTag
+    
+ }
+
+
+
+function renderFox(){
+    fetch("./db.json")
+.then(response => response.json())
+.then(newsData => { console.log(newsData)
+
+    let foxNewsStory = newsData[0].data
+    let newFoxNewsObject = foxNewsStory.map((story) => ({
+        "title": story.title,
+        "url": story.url,
+        "image": story.image,
+        "keywords": story.deep_keywords,
+
+    }))
+
+    render(newFoxNewsObject)
+    foxNewsSearchArray.push(newFoxNewsObject)
+ 
+})
+}
+
+function render(newsObj) {
+    let container = document.getElementById('rightside')
+    newsObj.forEach((story) => {
+        container.appendChild(makeArticle(story))
+        // console.log(story.keywords)
+        
+    })
+ }  
+
+
+
+
+function renderCnn(){
+    fetch("./db.json-2")
+    .then(response => response.json())
+    .then(data => {
+        let eachCnnStory = data[0].data
+        console.log(eachCnnStory)
+       let myNewCnnObj = eachCnnStory.map((story) => ({
+            "image": story.image,
+            "keywords": story.deep_keywords,
+            "title": story.title,
+            "url": story.url,
+        }))
+        // globalKeywordsVariable = myNewCnnObj[0].keywords
+        cnnNewsSearchArray.push(myNewCnnObj)
+        renderLeftSide(myNewCnnObj)
+
+        })
+    
+
+        function renderLeftSide(newsObj) {
+            let container = document.getElementById('leftside')
+            newsObj.forEach((story) => {
+                container.appendChild(makeArticle(story))
+                
+            })
+         }      
+}
+
+
+
+
+renderCnn()
+renderFox()

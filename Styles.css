@@ -4,65 +4,93 @@
     position: fixed;
     z-index: 1;
     overflow-x: hidden;
+  
+  }
+
+  #cnn, #fox { 
+    font-size: xx-large;
+    /* -webkit-text-stroke: medium; */
+    /* position:fixed; */
+    text-align: center;
     
-   }
-   /* Control the left side */
-   .left {
+  }
+
+  .form {
+    text-align: center;
+  }
+
+  .divcontainer {
+    height: 65px;
+    overflow: scroll;
+    background-color: white;
+    color: black;
+    width: 75%;
+    margin: 0px auto;
+    border: solid gold 2px;
+    border-radius: 7px;
+    margin-top: -70px;
+  }
+
+  #intro-sentence {
+    background-color: white;
+    text-align: center;
+    /* display: inline-block; */
+    color: black
+
+  }
+
+ .likes{
+   max-width: 40px;
+ }
+
+  article {
+
+    /* background-color: rgb(150, 150, 253); */
+    height: 60vh;
+    
+  }
+  
+  img {
+
+    width: 100%;
+    height: 300px;
+
+
+  }
+
+  .h2, h2 {
+    font-size: initial;
+    text-align: center;
+}
+
+  
+  
+  .left {
     left: 0;
     background-image: url('https://media.istockphoto.com/vectors/independence-day-abstract-background-vector-id1142470115?k=20&m=1142470115&s=612x612&w=0&h=5pa4oWPuei7WoJfTKGLEwCaS4MWJKdh9inflR530lys=');
     overflow: scroll;
-    color: white;
-    width: 40%;
-   }
-   /* Control the right side */
-   .right {
+    color: white
+  }
+  
+  .right {
     right: 0;
-    overflow: scroll;
-    color: white;
     background-image: url('https://t4.ftcdn.net/jpg/03/45/78/29/360_F_345782930_8FFd1mgvOKYOeppAVSv1S9yPykFpj65i.jpg');
-    width: 40%
-   }
+    overflow: scroll;
+    color: white
+  }
+
+  h3 {
+    text-align: center;
+  }
 
   #header {
-      background-image: url('https://cdn.pixabay.com/photo/2016/01/24/02/43/banner-1158378_960_720.jpg');
-      color: white;
-      width: 100%;
-  }
-
-  #comment-section{
-      width: 20%;
-      padding: 0px 0px 0px 600px;  
-      display: block;
+    background-image: url('https://cdn.pixabay.com/photo/2016/01/24/02/43/banner-1158378_960_720.jpg');    
+    color: white;
+    text-align: center;  
     
-  }
-#comment-container{
-    width: 20%;
-    margin: 0px 0px 300px 0px;
-    left: -25px;
-    position: relative;
-    padding: 0px 0px 0px 50px;
-    display: inline-table;
+
 }
-  #searchbar{
-      height: 30px;
-      margin: 0px 0px 0px 250px
-  }
 
-  * {
+* {
       font-family: Georgia, 'Times New Roman', Times, serif;
-    box-sizing: border-box;
-  }
-
-  .nav{
-      margin: 0px;
-  }
-  .nav li {
-      display: inline;
-  }
-
-  #footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem
   }
