@@ -13,13 +13,16 @@
     text-align: center;
     
   }
-
+    .likebutton{
+      float: left;
+      margin-top: 275px;
+    }
   .form {
     text-align: center;
   }
 
   .divcontainer {
-    height: 65px;
+    height: 45px;
     overflow: scroll;
     background-color: white;
     color: black;
@@ -27,7 +30,7 @@
     margin: 0px auto;
     border: solid gold 2px;
     border-radius: 7px;
-    margin-top: -70px;
+    margin-top: -40px;
   }
 
   #intro-sentence {
@@ -51,15 +54,15 @@
   
   img {
 
-    width: 100%;
+    width: 80%;
     height: 300px;
-
+    margin-left: 70px;
 
   }
 
-  .h2, h2 {
-    font-size: initial;
-    text-align: center;
+  
+h3 {
+  font-size: large;
 }
 
   
