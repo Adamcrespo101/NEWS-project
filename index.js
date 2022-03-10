@@ -40,15 +40,15 @@ form.addEventListener('keyup',(e) => {
 function makeArticle(story){
     // console.log(story)
     // create set up 
-    let h2Tag = document.createElement('h2')
+    let h3Tag = document.createElement('h3')
     let articleTag = document.createElement('article') 
     articleTag.setAttribute('class', 'article-tags')  
     let aTag = document.createElement('a')
     let imgTag = document.createElement('img')
-    articleTag.appendChild(h2Tag)
+    articleTag.appendChild(h3Tag)
     aTag.appendChild(imgTag)
     articleTag.appendChild(aTag)
-    h2Tag.appendChild(document.createTextNode(story.title))
+    h3Tag.appendChild(document.createTextNode(story.title))
     let href = document.createAttribute('href')
     href.value = story.url
     aTag.setAttributeNode(href)
