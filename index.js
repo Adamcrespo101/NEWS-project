@@ -1,30 +1,45 @@
-//could assign newNewsObject to a global variable
-emptyArticleArray = []
-console.log('emptyArticleArray', emptyArticleArray)
-allKeywords = []
-console.log(allKeywords)
+foxNewsSearchArray = []
+cnnNewsSearchArray = []
 
-//RIGHT SIDE!
+
+//RIGHT SIDE! FOX
 const form = document.querySelector('form')
 form.addEventListener('keyup', (e) => {
 const searchString = e.target.value
-console.log(searchString)
-const filterNewsArray = emptyArticleArray.filter(newsStory => {
-  return newsStory.keywords.includes(searchString)
-
+// console.log(searchString)
+let container = document.getElementById('rightside')
+let currentArticles = container.querySelectorAll('article')
+currentArticles.forEach((article) => article.remove())
+const filterNewsArray = foxNewsSearchArray.forEach(newsStory => {
+    newsStory.forEach((story) => {
+       let whatIWant = story.keywords
+       if (whatIWant.includes(searchString)){
+           container.appendChild(makeArticle(story))
+       }
+    })
 })
-aftersearch(filterNewsArray)
+        
 })
 
-function aftersearch(searchedArray){
-    let rightside = document.getElementById('rightside')
-    rightside = render(searchedArray)
-}
-
-
+//LEFT SIDE event listener! CNN
+form.addEventListener('keyup',(e) => {
+    const searchString = e.target.value
+    let container = document.getElementById('leftside')
+    let currentArticles = container.querySelectorAll('article')
+    currentArticles.forEach((article) => article.remove())
+    const filterNewsArray = cnnNewsSearchArray.forEach(newsStory => {
+        newsStory.forEach((story) => {
+           let whatIWant = story.keywords
+           if (whatIWant.includes(searchString)){
+               container.appendChild(makeArticle(story))
+           }
+        })
+    })
+})
 
 function makeArticle(story){
-    (console.log(story))
+    // console.log(story)
+    // create set up 
     let h2Tag = document.createElement('h2')
     let articleTag = document.createElement('article') 
     articleTag.setAttribute('class', 'article-tags')  
@@ -41,18 +56,10 @@ function makeArticle(story){
     let src = document.createAttribute('src')
     src.value = story.image
     imgTag.setAttributeNode(src)
-   allKeywords.push(story.keywords[0])
-    // deepKeywordsArray.push(allKeywords)
-    // deepKeywordsObj.push(story)
-    // filterFunction(story)
-    emptyArticleArray.push(story)
-
 
     //add comment and submit button
     let form = document.createElement('form')
     form.setAttribute('class', 'form')
-   
-   
     let commentBttn = document.createElement('button')
     let input = document.createElement('input')
     let likeBttn = document.createElement('button')
@@ -69,21 +76,9 @@ function makeArticle(story){
         e.preventDefault()
         let pTag = document.createElement('p')
         pTag.textContent = input.value
-        divContainer.append(pTag)
-        
-        // divContainer.append(form)
-        // divContainer.append(pTag)
-       
-        // form.reset(commentInput)
-       
-
-        
+        divContainer.append(pTag)    
     })
-    // likeBttn.addEventListener()
-
-   
     return articleTag
-    
  }
 
 
@@ -103,6 +98,7 @@ function renderFox(){
     }))
 
     render(newFoxNewsObject)
+    foxNewsSearchArray.push(newFoxNewsObject)
 
  
 })
@@ -111,14 +107,9 @@ function renderFox(){
 function render(newsObj) {
     let container = document.getElementById('rightside')
     newsObj.forEach((story) => {
-        container.appendChild(makeArticle(story))
-        // console.log(story.keywords)
-        
+        container.appendChild(makeArticle(story)) 
     })
  }  
-
-
-
 
 function renderCnn(){
     fetch("./db.json-2")
@@ -132,11 +123,11 @@ function renderCnn(){
             "title": story.title,
             "url": story.url,
         }))
-        // globalKeywordsVariable = myNewCnnObj[0].keywords
-       
+        cnnNewsSearchArray.push(myNewCnnObj)
         renderLeftSide(myNewCnnObj)
-
+        
         })
+    }
     
 
         function renderLeftSide(newsObj) {
@@ -146,9 +137,6 @@ function renderCnn(){
                 
             })
          }      
-}
-
-
 
 
 
