@@ -6,6 +6,27 @@
     overflow-x: hidden;
   }
 
+  #cnn, #fox { 
+    font-size: xx-large;
+    /* -webkit-text-stroke: medium; */
+    /* position:fixed; */
+    text-align: center;
+    
+  }
+
+  .form {
+    text-align: center;
+  }
+
+  .divcontainer {
+    height: 100px;
+    overflow: scroll;
+    background-color: white;
+    color: black;
+    width: 75%;
+    margin: 0px auto;
+  }
+
   #intro-sentence {
     background-color: white;
     text-align: center;

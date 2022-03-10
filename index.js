@@ -4,7 +4,7 @@ console.log('emptyArticleArray', emptyArticleArray)
 allKeywords = []
 console.log(allKeywords)
 
-
+//RIGHT SIDE!
 const form = document.querySelector('form')
 form.addEventListener('keyup', (e) => {
 const searchString = e.target.value
@@ -16,72 +16,18 @@ const filterNewsArray = emptyArticleArray.filter(newsStory => {
 aftersearch(filterNewsArray)
 })
 
-function aftersearch(searchArray){
-    console.log(searchArray)
+function aftersearch(searchedArray){
+    let rightside = document.getElementById('rightside')
+    rightside = render(searchedArray)
 }
 
-// send to a new function that removes previous articles and replaces with this new filteres news array
 
-// console.log(filterAllKeywords)
-
-
-
-// const keyword = allKeywords.filter(word => {
-   
-//         if (word == searchString) {
-//             console.log('keyword exists')
-//         } else {
-//             console.log('no match')
-//         }
-      
-//     })
-    // if (keyword.includes(searchString)){
-    //     console.log('yay')
-    // }
-    // console.log(keyword.toString())
-
-// console.log('HERE',typeof keyword)
-    // if (allKeywords[0].includes(searchString)){
-    //     console.log('hi')
-    // }
-    // else{
-    //     console.log('did not work')
-    // }
-
-// console.log(searchString)
-
-// const filteredKeywords = emptyArticleArray.filter(array => {
-//     // console.log(array.keywords)
-//     console.log(array.keywords)
-//     if(searchString == allKeywords){
-//         // makeArticle(filteredKeywords)
-//         console.log('hi')
-//     }
-// })
-
-
-    
-
-
-
-
-    
-
-
-
-//TRYING A FILTER FUNCTION
-
-// function filterFunction(story){
-    
-//     story.keywords.filter(word => {
-//         word.includes(form)
-//         console.log(word)
-//     })
-// }
 
 function makeArticle(story){
+    (console.log(story))
     let h2Tag = document.createElement('h2')
-    let articleTag = document.createElement('article')   
+    let articleTag = document.createElement('article') 
+    articleTag.setAttribute('class', 'article-tags')  
     let aTag = document.createElement('a')
     let imgTag = document.createElement('img')
     articleTag.appendChild(h2Tag)
@@ -100,6 +46,42 @@ function makeArticle(story){
     // deepKeywordsObj.push(story)
     // filterFunction(story)
     emptyArticleArray.push(story)
+
+
+    //add comment and submit button
+    let form = document.createElement('form')
+    form.setAttribute('class', 'form')
+   
+   
+    let commentBttn = document.createElement('button')
+    let input = document.createElement('input')
+    let likeBttn = document.createElement('button')
+    let divContainer = document.createElement('div')
+   divContainer.setAttribute('class', 'divcontainer')
+    likeBttn.setAttribute('class', 'likebutton')
+    likeBttn.innerText = 'Like ❤️'
+    input.setAttribute('placeholder', 'Add a comment...')
+    input.setAttribute('class', 'comment-input')
+    commentBttn.innerText = 'Comment'
+    form.append(input, commentBttn, likeBttn)
+    articleTag.append(divContainer, form)
+    form.addEventListener('submit', function (e){
+        e.preventDefault()
+        let pTag = document.createElement('p')
+        pTag.textContent = input.value
+        divContainer.append(pTag)
+        
+        // divContainer.append(form)
+        // divContainer.append(pTag)
+       
+        // form.reset(commentInput)
+       
+
+        
+    })
+    // likeBttn.addEventListener()
+
+   
     return articleTag
     
  }
@@ -112,7 +94,6 @@ function renderFox(){
 .then(newsData => { console.log(newsData)
 
     let foxNewsStory = newsData[0].data
-    // console.log(foxNewsStory)
     let newFoxNewsObject = foxNewsStory.map((story) => ({
         "title": story.title,
         "url": story.url,
@@ -120,11 +101,14 @@ function renderFox(){
         "keywords": story.deep_keywords,
 
     }))
-    // deepKeywordsObj
 
     render(newFoxNewsObject)
 
- function render(newsObj) {
+ 
+})
+}
+
+function render(newsObj) {
     let container = document.getElementById('rightside')
     newsObj.forEach((story) => {
         container.appendChild(makeArticle(story))
@@ -132,8 +116,6 @@ function renderFox(){
         
     })
  }  
-})
-}
 
 
 
