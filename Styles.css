@@ -33,6 +33,19 @@
     margin-top: -40px;
   }
 
+  p {
+    line-height: 70%;
+  }
+
+  #share-amount:hover {
+    cursor: pointer;
+  }
+
+  #share-amount {
+    width: 5%;
+    height: 5%;
+  }
+
   #intro-sentence {
     background-color: white;
     text-align: center;
@@ -56,7 +69,8 @@
 
     width: 80%;
     height: 300px;
-    margin-left: 70px;
+    margin-left: 40px;
+    
 
   }
 

@@ -79,7 +79,32 @@ function makeArticle(story){
         likes++; //
        
     })
-   divContainer.setAttribute('class', 'divcontainer')
+
+let shareAmount = document.createElement('a')
+// shareAmount.setAttribute('type', 'image')
+shareAmount.setAttribute('id', 'share-amount') 
+// shareAmount.setAttribute('src', )
+
+shareAmount.innerText = '🔗'
+
+h3Tag.appendChild(shareAmount)  
+
+
+
+shareAmount.addEventListener('click', () => {
+  
+copyToClipboard()
+  
+
+ })
+
+ function copyToClipboard() {
+    let link = aTag.href        
+     alert("Copied to Clipboard")
+ }
+
+
+    divContainer.setAttribute('class', 'divcontainer')
     likeBttn.setAttribute('class', 'likebutton')
     likeBttn.innerText = '❤️'
     input.setAttribute('placeholder', 'Add a comment...')
