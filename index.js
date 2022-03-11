@@ -60,25 +60,63 @@ function makeArticle(story){
     //add comment and submit button
     let form = document.createElement('form')
     form.setAttribute('class', 'form')
+   
+   
     let commentBttn = document.createElement('button')
     let input = document.createElement('input')
+    
     let likeBttn = document.createElement('button')
     let divContainer = document.createElement('div')
+    let likeContainer = document.createElement('div')//
+    likeContainer.className = 'likes'
+    let likes = Math.floor(Math.random()* 10000);//
+    likes.className = 'likes'//
+    likeContainer.textContent = 'Likes: ' + likes;//
+    //.append(likeBttn)
+    
+    likeBttn.addEventListener('click', () => { //
+        likeContainer.textContent = 'Likes: ' + likes; //         
+        likes++; //
+       
+    })
    divContainer.setAttribute('class', 'divcontainer')
     likeBttn.setAttribute('class', 'likebutton')
-    likeBttn.innerText = 'Like ❤️'
+    likeBttn.innerText = '❤️'
     input.setAttribute('placeholder', 'Add a comment...')
     input.setAttribute('class', 'comment-input')
+    let nameInput = document.createElement('input') //
+    nameInput.setAttribute('placeholder', 'Name...') //
+    nameInput.setAttribute('class', 'name-input')//
     commentBttn.innerText = 'Comment'
-    form.append(input, commentBttn, likeBttn)
-    articleTag.append(divContainer, form)
-    form.addEventListener('submit', function (e){
+    articleTag.append(likeBttn, likeContainer)
+    form.append(nameInput, input, commentBttn)
+    articleTag.append(divContainer, form) //
+    form.addEventListener('submit', function (e){ //
         e.preventDefault()
-        let pTag = document.createElement('p')
-        pTag.textContent = input.value
-        divContainer.append(pTag)    
+        if (nameInput.value === ''){
+            return alert('please enter a name')
+        } else {
+            let pTag = document.createElement('p')
+            pTag.textContent = `${nameInput.value}: ${input.value}`
+            divContainer.append(pTag)
+            form.reset(nameInput, input)
+            
+        }
+       
+        
+        // divContainer.append(form)
+        // divContainer.append(pTag)
+       
+        // form.reset(commentInput)
+       
+
+        
     })
+    // likeBttn.addEventListener()
+
+   
     return articleTag
+    
  }
 
 
@@ -99,7 +137,6 @@ function renderFox(){
 
     render(newFoxNewsObject)
     foxNewsSearchArray.push(newFoxNewsObject)
-
  
 })
 }
