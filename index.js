@@ -1,7 +1,7 @@
 foxNewsSearchArray = []
 cnnNewsSearchArray = []
 
- 
+
 //RIGHT SIDE! FOX
 const form = document.querySelector('form')
 form.addEventListener('keyup', (e) => {
